@@ -6,7 +6,7 @@ Umber is a tool that quickly installs the latest & greatest software with 12x th
 Just pop into a Terminal and run these commands:
 ```
 cd 
-https://github.com/js3r2/umber-insider/
+git clone https://github.com/js3r2/umber-insider
 cd umber-insider
 sudo chmod +x installer.sh
 sudo chmod -R 777 installer.sh
