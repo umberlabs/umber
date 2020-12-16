@@ -1,0 +1,67 @@
+#!/bin/bash
+
+echo "UM: Loaded main script. Starting..."
+
+function err_exit() {
+    echo "Installation failed. Please try again."
+    exit 1
+}
+trap "err_exit" ERR
+
+export DEBIAN_FRONTEND=noninteractive
+
+read -r -p "UM: Install Homebrew? [Y/n]" hb
+case $hb in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing Homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install wget? [Y/n]" wg
+case $wg in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing wget..."
+        brew install wget
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install Spid3r? [Y/n]" sp
+case $sp in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing Spid3r..."
+        cd /opt
+        sudo mkdir um
+        cd um
+        git clone https://github.com/Perdyx/scripts
+        cd scripts
+        mv spid3r.sh spid3r
+        sudo mv spid3r /usr/local/bin
+        sudo chmod +x /usr/local/bin/spid3r
+        echo "UMAgent: You will need to tweak the configs. To do so, run sudo nano /usr/local/bin/spid3r.
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install UM to /usr/local/bin? [Y/n]" um
+case $wg in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing UM to /usr/local/bin..."
+        cd /usr/local/bin
+        curl -o um https://raw.githubusercontent.com/js3r2/umber/main/um
+        sudo chmod +x /usr/local/bin/um
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+echo "UM has finished! Enjoy your new software!"
