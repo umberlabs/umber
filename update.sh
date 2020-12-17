@@ -26,6 +26,10 @@ case $hb in
         echo "Umber Updater: Updated! Cleaning up..."
         cd /opt
         sudo rm -rf uu
+        sudo chmod +x /usr/local/bin/um
+        sudo chmod -R 777 /usr/local/bin/um
+        sudo chmod +x /usr/local/bin/um-update
+        sudo chmod -R 777 /usr/local/bin/um-update
     ;;
     [nN][oO]|[nN]|'')
         echo "Canceled update."
