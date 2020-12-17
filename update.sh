@@ -20,7 +20,7 @@ case $hb in
         cd /opt
         sudo mkdir uu
         cd uu
-        sudo git clone https://github.com/js3r2/umber
+        sudo git clone https://github.com/umberlabs/umber
         cd umber
         sudo mv um /usr/local/bin
         echo "Umber Updater: Updated! Cleaning up..."
