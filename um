@@ -1,4 +1,5 @@
 #!/bin/bash
+# UM Utility 1.2
 
 echo "UM: Loaded main script. Starting..."
 
@@ -36,8 +37,14 @@ read -r -p "UM: Install Node.js? [Y/n] " nj
 case $nj in
     [yY][eE][sS]|[yY])
         echo "UM: Installing Node.js..."
-        brew install node
-        brew install npm
+        cd 
+        mkdir um-temp
+        cd um-temp
+        curl -o node.pkg https://nodejs.org/dist/v14.15.2/node-v14.15.2.pkg
+        sudo installer -pkg node.pkg -target /
+        echo "UM: Node.js: Cleaning up..."
+        cd 
+        rm -rf um-temp
     ;;
     [nN][oO]|[nN]|'')
         echo "UM: Skipping..."
