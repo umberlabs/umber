@@ -22,6 +22,52 @@ case $hb in
     ;;
 esac
 
+read -r -p "UM: Install Homebrew Cask? [Y/n] " hbc
+case $hbc in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing Homebrew Cask..."
+        brew install cask
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install Microsoft Powershell (Requires Homebrew, Cask)? [Y/n] " mp
+case $mp in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing Microsoft Powershell..."
+        brew install --cask powershell
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install ClamAV (Requires Homebrew)? [Y/n] " ca
+case $ca in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing ClamAV..."
+        brew install clamav
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install Starboard X? [Y/n] " sx
+case $sx in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing Starboard X..."
+        curl -o sx.zip https://github.com/js3r2/umber-insider/raw/inst-files/sx.zip
+        unzip -b sx.zip
+        mv Starboard\ X.app /Applications
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
 read -r -p "UM: Install wget? [Y/n] " wg
 case $wg in
     [yY][eE][sS]|[yY])
