@@ -1,5 +1,5 @@
 #!/bin/bash
-# UM Utility 1.3
+# UM Utility 1.3.2
 
 echo "UM: Loaded main script. Starting..."
 
@@ -16,6 +16,29 @@ case $hb in
     [yY][eE][sS]|[yY])
         echo "UM: Installing Homebrew..."
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install Microsoft Edge? [Y/n] " me
+case $me in
+    [yY][eE][sS]|[yY])
+        echo "UM: Starting UM-pkg agent..."
+        echo "UM-pkg: Started agent! Installing..."
+        cd /opt
+        sudo mkdir um-pkg
+        cd um-pkg
+        sudo curl -o edge.pkg https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-87.0.664.60.pkg?platform=Mac&Consent=1&channel=Stable
+        for f in *.pkg ; 
+            do sudo installer -verbose -pkg "$f" -target CurrentUserHomeDirectory
+        done
+        echo "UM: Closing UM-pkg agent..."
+        echo "UM Closed UM-pkg agent!"
+        echo "UM: Cleaning up..."
+        cd /opt
+        sudo rm -rf um-pkg
     ;;
     [nN][oO]|[nN]|'')
         echo "UM: Skipping..."
