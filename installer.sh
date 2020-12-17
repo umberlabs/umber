@@ -22,7 +22,7 @@ case $hb in
         sudo mv um-update /usr/local/bin
         sudo chmod +x /usr/local/bin/um-update
         sudo chmod -R 777 /usr/local/bin/um-update
-        cd 
+        cd /Users/$USER/
         rm -rf um
         echo "UM Installer: Summary: um & um-update have been installed to /usr/local/bin."
     ;;
