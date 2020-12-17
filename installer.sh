@@ -12,9 +12,9 @@ export DEBIAN_FRONTEND=noninteractive
 read -r -p "UM Installer: Install UM? [Y/n] " hb
 case $hb in
     [yY][eE][sS]|[yY])
-        echo "UM Installer: Installing package js3r2/main..."
+        echo "UM Installer: Installing package umberlabs/main..."
         git clone https://github.com/umberlabs/umber um
-        cd umber
+        cd um
         sudo mv um /usr/local/bin
         sudo chmod +x /usr/local/bin/um
         sudo chmod -R 777 /usr/local/bin/um
@@ -22,9 +22,9 @@ case $hb in
         sudo mv um-update /usr/local/bin
         sudo chmod +x /usr/local/bin/um-update
         sudo chmod -R 777 /usr/local/bin/um-update
-        echo "UM Installer: Summary: um & um-update have been installed to /usr/local/bin."
         cd 
         rm -rf um
+        echo "UM Installer: Summary: um & um-update have been installed to /usr/local/bin."
     ;;
     [nN][oO]|[nN]|'')
         echo "UM Installer: Skipping..."
