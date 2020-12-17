@@ -13,5 +13,7 @@ sudo chmod -R 777 installer.sh
 ./installer.sh
 ```
 
+If you prefer using a GUI, click [here](https://github.com/js3r2/umber-insider/raw/main/UmberTools.zip) to download Umber Tools, a set of GUI apps for Umber maintenance.
+
 **Running on Linux**<br>
 Linux support is not here yet, but it may be soon ;)
