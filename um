@@ -22,23 +22,47 @@ case $hb in
     ;;
 esac
 
-read -r -p "UM: Install Microsoft Edge? [Y/n] " me
+read -r -p "UM: Install Clean My Mac X (requires Homebrew)? [Y/n] " cm
+case $cm in
+    [yY][eE][sS]|[yY])
+        echo "UM: Trying to start UM-hb..."
+        echo "UM: Started UM-hb! Transferring packets..."
+        echo "UM-hb: Triggering brew update & xcrun..."
+        brew update
+        echo "UM-hb: Installing formulae cleanmymac..."
+        brew install --cask cleanmymac
+        echo "UM: Done, stopping service UM-hb..."
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install AppCleaner (requires Homebrew)? [Y/n] " ap
+case $ap in
+    [yY][eE][sS]|[yY])
+        echo "UM: Trying to start UM-hb..."
+        echo "UM: Started UM-hb! Transferring packets..."
+        echo "UM-hb: Triggering brew update & xcrun..."
+        brew update
+        echo "UM-hb: Installing formulae app-cleaner..."
+        brew install --cask app-cleaner
+        echo "UM: Done, stopping service UM-hb..."
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install Microsoft Edge (requires Homebrew)? [Y/n] " me
 case $me in
     [yY][eE][sS]|[yY])
-        echo "UM: Starting UM-pkg agent..."
-        echo "UM-pkg: Started agent! Installing..."
-        cd /opt
-        sudo mkdir um-pkg
-        cd um-pkg
-        sudo curl -o edge.pkg https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/MacAutoupdate/MicrosoftEdge-87.0.664.60.pkg?platform=Mac&Consent=1&channel=Stable
-        for f in *.pkg ; 
-            do sudo installer -verbose -pkg "$f" -target CurrentUserHomeDirectory
-        done
-        echo "UM: Closing UM-pkg agent..."
-        echo "UM Closed UM-pkg agent!"
+        echo "UM: Starting UM-hb agent..."
+        echo "UM-hb: Started agent! Installing..."
+        brew install --cask microsoft-edge
+        echo "UM: Closing UM-hb agent..."
+        echo "UM Closed UM-hb agent!"
         echo "UM: Cleaning up..."
-        cd /opt
-        sudo rm -rf um-pkg
     ;;
     [nN][oO]|[nN]|'')
         echo "UM: Skipping..."
@@ -102,18 +126,11 @@ case $wg in
     ;;
 esac
 
-read -r -p "UM: Install Node.js? [Y/n] " nj
+read -r -p "UM: Install Node.js (requires Homebrew)? [Y/n] " nj
 case $nj in
     [yY][eE][sS]|[yY])
         echo "UM: Installing Node.js..."
-        cd 
-        mkdir um-temp
-        cd um-temp
-        curl -o node.pkg https://nodejs.org/dist/v14.15.2/node-v14.15.2.pkg
-        sudo installer -pkg node.pkg -target /
-        echo "UM: Node.js: Cleaning up..."
-        cd 
-        rm -rf um-temp
+        brew install node
     ;;
     [nN][oO]|[nN]|'')
         echo "UM: Skipping..."
