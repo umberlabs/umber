@@ -1,5 +1,5 @@
 #!/bin/bash
-# UM Utility 1.3.3
+# UM Utility 1.3.4
 
 echo "UM: Loaded main script. Starting..."
 
@@ -54,7 +54,7 @@ case $ap in
     ;;
 esac
 
-read -r -p "UM: Install Microsoft Edge (requires Homebrew)? [Y/n] " me
+read -r -p "UM: Install Microsoft Edge (requires Homebrew, Cask)? [Y/n] " me
 case $me in
     [yY][eE][sS]|[yY])
         echo "UM: Starting UM-hb agent..."
@@ -102,13 +102,26 @@ case $ca in
     ;;
 esac
 
-read -r -p "UM: Install Starboard X? [Y/n] " sx
-case $sx in
+read -r -p "UM: Install Atom (Requires Homebrew, Cask)? [Y/n] " at
+case $at in
     [yY][eE][sS]|[yY])
-        echo "UM: Installing Starboard X..."
-        curl -o sx.zip https://github.com/js3r2/umber-insider/raw/inst-files/sx.zip
-        unzip -b sx.zip
-        mv Starboard\ X.app /Applications
+        echo "UM: Starting UM-cs..."
+        echo "UM: Started! Making work UM-cs's problem..."
+        echo "UM: Exiting out UM main process..."
+        echo "UM-cs: Installing Cask atom..."
+        brew install --cask atom
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+
+read -r -p "UM: Install OBS Broadcasting Software (Requires Homebrew, Cask)? [Y/n] " ob
+case $ob in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing OBS..."
+        brew install --cask obs
     ;;
     [nN][oO]|[nN]|'')
         echo "UM: Skipping..."
