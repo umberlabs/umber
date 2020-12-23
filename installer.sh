@@ -15,6 +15,9 @@ case $hb in
         echo "UM Installer: Installing package umberlabs/main..."
         git clone https://github.com/umberlabs/umber um
         cd um
+        sudo mv um-prop /usr/local/bin
+        sudo chmod +x /usr/local/bin/um-prop
+        sudo chmod -R 777 /usr/local/bin/um-prop
         sudo mv um /usr/local/bin
         sudo chmod +x /usr/local/bin/um
         sudo chmod -R 777 /usr/local/bin/um
@@ -24,7 +27,7 @@ case $hb in
         sudo chmod -R 777 /usr/local/bin/um-update
         cd /Users/$USER/
         rm -rf um
-        echo "UM Installer: Summary: um & um-update have been installed to /usr/local/bin."
+        echo "UM Installer: Summary: um, um-update & um-prop have been installed to /usr/local/bin."
     ;;
     [nN][oO]|[nN]|'')
         echo "UM Installer: Skipping..."
