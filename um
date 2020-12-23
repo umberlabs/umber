@@ -1,5 +1,5 @@
 #!/bin/bash
-# UM Utility 1.3.4
+# UM Utility 1.3.5
 
 echo "UM: Loaded main script. Starting..."
 
@@ -16,6 +16,17 @@ case $hb in
     [yY][eE][sS]|[yY])
         echo "UM: Installing Homebrew..."
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install Spotify (requires Homebrew, Cask)? [Y/n] " sp
+case $sp in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing Spotify..."
+        brew install --cask spotify
     ;;
     [nN][oO]|[nN]|'')
         echo "UM: Skipping..."
