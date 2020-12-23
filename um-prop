@@ -1,0 +1,34 @@
+#!/bin/bash
+# UM-prop Utility 1.3.5
+# UM-prop is designed for partnered software such as Starboard. It is not the main script.
+
+echo "UM: Attempting to connect to umberlabs/prop..."
+echo "UM: Connected! Transfering workload..."
+echo "UM: Closing um service..."
+echo "UM-prop: Script loaded. Now continuing..."
+
+function err_exit() {
+    echo "Installation failed. Please try again."
+    exit 1
+}
+trap "err_exit" ERR
+
+export DEBIAN_FRONTEND=noninteractive
+
+read -r -p "UM-prop: Install Starboard (BEFORE DOING SO, SET /APPLICATIONS TO READ AND WRITE)? [Y/n] " st
+case $st in
+    [yY][eE][sS]|[yY])
+        echo "UM-prop: Installing Starboard..."
+        cd /Users/$USER
+        mkdir dms-temp
+        cd dms-temp
+        curl -o dms.dmg https://github.com/starboardops/starboard.desktop/releases/download/1.10.0/Starboard.X.dmg
+        hdiutil attach dms.dmg
+        sudo mv /Volumes/Starboard\ X\ 1.10.0/Starboard\ X.app /Applications
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM-prop: Skipping..."
+    ;;
+esac
+
+echo "UM has finished! Enjoy your new software!"
