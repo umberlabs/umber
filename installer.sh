@@ -13,6 +13,7 @@ read -r -p "UM Installer: Install UM? [Y/n] " hb
 case $hb in
     [yY][eE][sS]|[yY])
         echo "UM Installer: Installing package umberlabs/main..."
+        cd /Users/$USER
         git clone https://github.com/umberlabs/umber um
         cd um
         sudo mv um-prop /usr/local/bin
