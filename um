@@ -1,5 +1,5 @@
 #!/bin/bash
-# UM Utility 1.3.5
+# UM Utility 1.3.6
 
 echo "UM: Loaded main script. Starting..."
 
@@ -80,11 +80,33 @@ case $me in
     ;;
 esac
 
-read -r -p "UM: Install Homebrew Cask? [Y/n] " hbc
-case $hbc in
+read -r -p "UM: Install Adobe Creative Cloud? [Y/n] " acc
+case $acc in
     [yY][eE][sS]|[yY])
-        echo "UM: Installing Homebrew Cask..."
-        brew install cask
+        echo "UM: Installing Adobe Creative Cloud..."
+        brew install --cask adobe-creative-cloud
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install Amazon Music? [Y/n] " am
+case $am in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing Amazon Music..."
+        brew install --cask amazon-music
+    ;;
+    [nN][oO]|[nN]|'')
+        echo "UM: Skipping..."
+    ;;
+esac
+
+read -r -p "UM: Install Amazon Photos? [Y/n] " ap
+case $am in
+    [yY][eE][sS]|[yY])
+        echo "UM: Installing Amazon Photos..."
+        brew install --cask amazon-photos
     ;;
     [nN][oO]|[nN]|'')
         echo "UM: Skipping..."
@@ -161,4 +183,4 @@ case $nj in
     ;;
 esac
 
-echo "UM has finished! Enjoy your new software!"
+echo "Merry Christmas! Umber just finished installing your software!"
