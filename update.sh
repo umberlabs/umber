@@ -1,5 +1,5 @@
 #!/bin/bash
-# Umber Updater v1.3.5
+# Umber Updater v1.3.6
 
 echo "Umber Updater: Starting..."
 
@@ -25,7 +25,7 @@ case $hb in
         sudo chmod +x installer.sh
         sudo chmod -R 777 installer.sh
         ./installer.sh
-        echo "Umber Updater: Updated! Cleaning up..."
+        echo "Cleaning up..."
         cd /opt
         sudo rm -rf uu
         sudo chmod +x /usr/local/bin/um
@@ -34,6 +34,7 @@ case $hb in
         sudo chmod -R 777 /usr/local/bin/um-prop
         sudo chmod +x /usr/local/bin/um-update
         sudo chmod -R 777 /usr/local/bin/um-update
+        echo "Done!"
     ;;
     [nN][oO]|[nN]|'')
         echo "Canceled update."
