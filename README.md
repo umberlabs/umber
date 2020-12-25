@@ -9,4 +9,10 @@ Just pop into a Terminal and run this command:
 
 
 **Running on Linux**<br>
-Linux support is not here yet, but it may be soon ;)
+Just run the port for Linux:
+
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/umberlabs/umber/main/installer-lin.sh)"`
+
+**Running on Windows**<br>
+
+To run Umber on Windows, set up a WSL for Ubuntu and run the Linux installer.
