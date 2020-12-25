@@ -1,5 +1,5 @@
 #!/bin/bash
-# UM Utility 1.3.6
+# UM Utility 1.3.7
 
 echo "UM: Loaded main script. Starting..."
 
@@ -183,4 +183,4 @@ case $nj in
     ;;
 esac
 
-echo "Merry Christmas! Umber just finished installing your software!"
+echo "Umber just finished installing your software!"
