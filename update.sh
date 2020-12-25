@@ -1,5 +1,5 @@
 #!/bin/bash
-# Umber Updater v1.3.6
+# Umber Updater v1.3.7
 
 echo "Umber Updater: Starting..."
 
@@ -34,7 +34,7 @@ case $hb in
         sudo chmod -R 777 /usr/local/bin/um-prop
         sudo chmod +x /usr/local/bin/um-update
         sudo chmod -R 777 /usr/local/bin/um-update
-        echo "Done!"
+        echo "Update complete!"
     ;;
     [nN][oO]|[nN]|'')
         echo "Canceled update."
