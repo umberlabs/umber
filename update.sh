@@ -1,5 +1,5 @@
 #!/bin/bash
-# Umber Updater v1.3.7
+# Umber Updater v1.3.7b2
 
 echo "Umber Updater: Starting..."
 
@@ -15,13 +15,16 @@ read -r -p "Umber Updater: Update Umber? [Y/n] " hb
 case $hb in
     [yY][eE][sS]|[yY])
         echo "Umber Updater: Removing old Umber..."
-        sudo rm /usr/local/bin/um
-        echo "Umber Updater: Launching Installer..."
         cd /opt
         sudo mkdir uu
         cd uu
         sudo git clone https://github.com/umberlabs/umber
         cd umber
+        sudo chmod -R 777 um-del.sh
+        sudo chmod +x um-del.sh
+        ./um-del.sh
+        echo "Umber Updater: Launching Installer..."
+        cd /opt/uu/umber
         sudo chmod +x installer.sh
         sudo chmod -R 777 installer.sh
         ./installer.sh
